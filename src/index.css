@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-urdu: "Noto Nastaliq Urdu", "Noto Naskh Arabic", serif;
+  --font-urdu-naskh: "Noto Naskh Arabic", "Noto Nastaliq Urdu", serif;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #f4f1ea;
+    color: #1c1917;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Classic ruled notebook paper lines */
+.exam-paper-ruled {
+  background-color: #fcfbf7;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 41px,
+    rgba(148, 163, 184, 0.28) 41px,
+    rgba(148, 163, 184, 0.28) 42px
+  );
+  background-position: 0 22px;
+}
+
+.exam-paper-blank {
+  background-color: #fcfbf7;
+}
+
+/* Urdu Nastaliq typography tuning */
+.urdu-nastaliq {
+  font-family: var(--font-urdu);
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+.urdu-digits {
+  font-family: var(--font-urdu-naskh);
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+
+/* Print Styles for A4 Exam Sheet */
+@page {
+  size: A4 portrait;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .print-sheet-page {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 auto !important;
+    padding: 12mm 14mm !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 268mm !important;
+    break-after: page;
+    page-break-after: always;
+    background-color: #ffffff !important;
+  }
+
+  .print-sheet-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .exam-paper-ruled {
+    background-color: #ffffff !important;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 41px,
+      rgba(148, 163, 184, 0.35) 41px,
+      rgba(148, 163, 184, 0.35) 42px
+    ) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .exam-margin-line {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
