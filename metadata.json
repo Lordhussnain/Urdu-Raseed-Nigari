@@ -1,0 +1,8 @@
+{
+  "name": "Urdu Qawaid-o-Insha — Raseed Nigari Textbook Viewer",
+  "description": "Digital textbook viewer and A4 print sheet studio for all six Urdu Qawaid-o-Insha receipts with an interactive 15-point exam rules checklist.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
